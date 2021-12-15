@@ -1,0 +1,43 @@
+﻿@model NeoBrowse
+@{
+    ViewData["Title"] = "Home Page";
+    var disablePrev = string.IsNullOrEmpty(ViewBag.PrevLink) ? "disabled" : "";
+    var disableNext = string.IsNullOrEmpty(ViewBag.NextLink) ? "disabled" : "";
+    var pageNum = int.Parse(ViewBag.SelfLink)+1;
+}
+
+<div class="asteroids-table">
+    <div class="asteroids-table-pagination">
+        <button class="btn btn-outline-secondary pagination-numbers" @disablePrev data-id="@ViewBag.PrevLink">Previous</button>
+
+        <a class="self-link" data-id="@ViewBag.SelfLink">@pageNum</a>
+
+        <button class="btn btn-outline-secondary pagination-numbers" @disableNext data-id="@ViewBag.NextLink">Next</button>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Neo ref. Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Abs. Magnitute</th>
+            <th scope="col">Hazardous</th>
+        </tr>
+        @foreach (var user in Model.Asteroids)
+        {
+
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.NeoReferenceId</td>
+                <td>@user.Name</td>
+                <td>@user.Designation</td>
+                <td>@user.AbsoluteMagnitudeH</td>
+                <td>@user.IsPotentiallyHazardousAsteroid</td>
+            </tr>
+        }
+    </table>
+
+
+</div>
+

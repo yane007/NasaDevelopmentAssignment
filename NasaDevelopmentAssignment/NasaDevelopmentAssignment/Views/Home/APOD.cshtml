@@ -1,0 +1,22 @@
+﻿@model AstronomyPictureOfTheDay
+
+<div class="apod-body">
+
+    <label asp-for="Date"></label>
+    <input asp-for="Date" class="date" />
+
+    <div class="apod">
+        @if (ViewBag.ShowAsteroid)
+        {
+            <p>@Model.Copyright</p>
+            <p>@Model.Explanation - @Model.Date</p>
+            <p>@Model.Url</p>
+            <img src="@Model.Url" />
+        }
+        else
+        {
+            <p>No Asteroid was found!</p>
+        }
+
+    </div>
+</div>
